@@ -8,9 +8,6 @@ cd ..
 # python bash
 . ./python-bash.sh
 
-# install libraries
-pip install -r requirements.txt
-
 # go to src
 cd summarization
 

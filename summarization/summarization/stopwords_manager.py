@@ -1,14 +1,24 @@
 
 
+def get_stopwords(language_code):
+    """Get set of stopwords
 
-def get_stoplist(language_code):
-    language = languageMap[language_code.lower()]
+    Keyword arguments:
+    language_code(str) -- the string of language code(Ex: en, vi, fr,...)
+
+    Returns:
+    set(str): set of stopwords
+    
+    """
+
+    language = languageDict[language_code.lower()]
     return set(
                 map(
                     lambda line: line.strip(), open('stoplists/' + language + '.txt')))
 
 
-languageMap = {
+# Language Dictionary
+languageDict = { 
     "vietnamese": "Vietnamese",
     "vn": "Vietnamese",
     "vn-vn": "Vietnamese",
