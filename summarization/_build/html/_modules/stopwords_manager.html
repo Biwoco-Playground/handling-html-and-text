@@ -1,0 +1,434 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>stopwords_manager &#8212; Summarization 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for stopwords_manager</h1><div class="highlight"><pre>
+<span></span>
+
+<div class="viewcode-block" id="get_stopwords"><a class="viewcode-back" href="../docs/stopwords_manager.html#stopwords_manager.get_stopwords">[docs]</a><span class="k">def</span> <span class="nf">get_stopwords</span><span class="p">(</span><span class="n">language_code</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get set of stopwords</span>
+
+<span class="sd">    Keyword arguments:</span>
+<span class="sd">    language_code(str) -- the string of language code(Ex: en, vi, fr,...)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    set(str): set of stopwords</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">language</span> <span class="o">=</span> <span class="n">languageDict</span><span class="p">[</span><span class="n">language_code</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+    <span class="k">return</span> <span class="nb">set</span><span class="p">(</span>
+                <span class="nb">map</span><span class="p">(</span>
+                    <span class="k">lambda</span> <span class="n">line</span><span class="p">:</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;stoplists/&#39;</span> <span class="o">+</span> <span class="n">language</span> <span class="o">+</span> <span class="s1">&#39;.txt&#39;</span><span class="p">)))</span></div>
+
+
+<span class="c1"># Language Dictionary</span>
+<span class="n">languageDict</span> <span class="o">=</span> <span class="p">{</span> 
+    <span class="s2">&quot;vietnamese&quot;</span><span class="p">:</span> <span class="s2">&quot;Vietnamese&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;vn&quot;</span><span class="p">:</span> <span class="s2">&quot;Vietnamese&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;vn-vn&quot;</span><span class="p">:</span> <span class="s2">&quot;Vietnamese&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;vietnam&quot;</span><span class="p">:</span> <span class="s2">&quot;Vietnamese&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;vi&quot;</span><span class="p">:</span> <span class="s2">&quot;Vietnamese&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;english&quot;</span><span class="p">:</span> <span class="s2">&quot;English&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;simple_english&quot;</span><span class="p">:</span> <span class="s2">&quot;Simple_English&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="s2">&quot;Simple_English&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;en-au&quot;</span><span class="p">:</span> <span class="s2">&quot;Simple_English&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;en-bz&quot;</span><span class="p">:</span> <span class="s2">&quot;Simple_English&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;en-ca&quot;</span><span class="p">:</span> <span class="s2">&quot;Simple_English&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;en-ie&quot;</span><span class="p">:</span> <span class="s2">&quot;Simple_English&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;en-jm&quot;</span><span class="p">:</span> <span class="s2">&quot;Simple_English&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;en-nz&quot;</span><span class="p">:</span> <span class="s2">&quot;Simple_English&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;en-ph&quot;</span><span class="p">:</span> <span class="s2">&quot;Simple_English&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;en-za&quot;</span><span class="p">:</span> <span class="s2">&quot;Simple_English&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;en-tt&quot;</span><span class="p">:</span> <span class="s2">&quot;Simple_English&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;en-gb&quot;</span><span class="p">:</span> <span class="s2">&quot;Simple_English&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;en-us&quot;</span><span class="p">:</span> <span class="s2">&quot;Simple_English&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;en-uk&quot;</span><span class="p">:</span> <span class="s2">&quot;Simple_English&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;en-zw&quot;</span><span class="p">:</span> <span class="s2">&quot;Simple_English&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;french&quot;</span><span class="p">:</span> <span class="s2">&quot;French&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fr&quot;</span><span class="p">:</span> <span class="s2">&quot;French&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fr-be&quot;</span><span class="p">:</span> <span class="s2">&quot;French&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fr-ca&quot;</span><span class="p">:</span> <span class="s2">&quot;French&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fr-fr&quot;</span><span class="p">:</span> <span class="s2">&quot;French&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fr-lu&quot;</span><span class="p">:</span> <span class="s2">&quot;French&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fr-mc&quot;</span><span class="p">:</span> <span class="s2">&quot;French&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fr-ch&quot;</span><span class="p">:</span> <span class="s2">&quot;French&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;dutch&quot;</span><span class="p">:</span> <span class="s2">&quot;Dutch&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;nl&quot;</span><span class="p">:</span> <span class="s2">&quot;Dutch&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;italian&quot;</span><span class="p">:</span> <span class="s2">&quot;Italian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;it&quot;</span><span class="p">:</span> <span class="s2">&quot;Italian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;it-ch&quot;</span><span class="p">:</span> <span class="s2">&quot;Italian&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;portuguese&quot;</span><span class="p">:</span> <span class="s2">&quot;Portuguese&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pt&quot;</span><span class="p">:</span> <span class="s2">&quot;Portuguese&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pt-br&quot;</span><span class="p">:</span> <span class="s2">&quot;Portuguese&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pt-pt&quot;</span><span class="p">:</span> <span class="s2">&quot;Portuguese&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;russian&quot;</span><span class="p">:</span> <span class="s2">&quot;Russian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ru&quot;</span><span class="p">:</span> <span class="s2">&quot;Russian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ru-mo&quot;</span><span class="p">:</span> <span class="s2">&quot;Russian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ru-ru&quot;</span><span class="p">:</span> <span class="s2">&quot;Russian&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;spanish&quot;</span><span class="p">:</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;es&quot;</span><span class="p">:</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;es-ar&quot;</span><span class="p">:</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;es-bo&quot;</span><span class="p">:</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;es-cl&quot;</span><span class="p">:</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;es-co&quot;</span><span class="p">:</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;es-cr&quot;</span><span class="p">:</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;es-do&quot;</span><span class="p">:</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;es-ec&quot;</span><span class="p">:</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;es-sv&quot;</span><span class="p">:</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;es-gt&quot;</span><span class="p">:</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;es-hn&quot;</span><span class="p">:</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;es-mx&quot;</span><span class="p">:</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;es-ni&quot;</span><span class="p">:</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;es-pa&quot;</span><span class="p">:</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;es-py&quot;</span><span class="p">:</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;es-pe&quot;</span><span class="p">:</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;es-pr&quot;</span><span class="p">:</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;es-es&quot;</span><span class="p">:</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;es-uy&quot;</span><span class="p">:</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;es-ve&quot;</span><span class="p">:</span> <span class="s2">&quot;Spanish&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;korean&quot;</span><span class="p">:</span> <span class="s2">&quot;Korean&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ko&quot;</span><span class="p">:</span> <span class="s2">&quot;Korean&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;kr&quot;</span><span class="p">:</span> <span class="s2">&quot;Korean&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;indonesian&quot;</span><span class="p">:</span> <span class="s2">&quot;Indonesian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;in&quot;</span><span class="p">:</span> <span class="s2">&quot;Indonesian&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;malay&quot;</span><span class="p">:</span> <span class="s2">&quot;Malay&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;afrikaans&quot;</span><span class="p">:</span> <span class="s2">&quot;Afrikaans&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;af&quot;</span><span class="p">:</span> <span class="s2">&quot;Afrikaans&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;albanian&quot;</span><span class="p">:</span> <span class="s2">&quot;Albanian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sq&quot;</span><span class="p">:</span> <span class="s2">&quot;Albanian&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;arabic&quot;</span><span class="p">:</span> <span class="s2">&quot;Arabic&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ar&quot;</span><span class="p">:</span> <span class="s2">&quot;Arabic&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;aragonese&quot;</span><span class="p">:</span> <span class="s2">&quot;Aragonese&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;an&quot;</span><span class="p">:</span> <span class="s2">&quot;Aragonese&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;armenian&quot;</span><span class="p">:</span> <span class="s2">&quot;Armenian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;hy&quot;</span><span class="p">:</span> <span class="s2">&quot;Armenian&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;aromanian&quot;</span><span class="p">:</span> <span class="s2">&quot;Aromanian&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;asturian&quot;</span><span class="p">:</span> <span class="s2">&quot;Asturian&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;azerbaijani&quot;</span><span class="p">:</span> <span class="s2">&quot;Azerbaijani&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;az&quot;</span><span class="p">:</span> <span class="s2">&quot;Azerbaijani&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;basque&quot;</span><span class="p">:</span> <span class="s2">&quot;Basque&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;eu&quot;</span><span class="p">:</span> <span class="s2">&quot;Basque&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;belarusian&quot;</span><span class="p">:</span> <span class="s2">&quot;Belarusian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;belarusian_taraskievica&quot;</span><span class="p">:</span> <span class="s2">&quot;Belarusian_Taraskievica&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;bengali&quot;</span><span class="p">:</span> <span class="s2">&quot;Bengali&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;bn&quot;</span><span class="p">:</span> <span class="s2">&quot;Bengali&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;bishnupriya_manipuri&quot;</span><span class="p">:</span> <span class="s2">&quot;Bishnupriya_Manipuri&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;bosnian&quot;</span><span class="p">:</span> <span class="s2">&quot;Bosnian&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;breton&quot;</span><span class="p">:</span> <span class="s2">&quot;Breton&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;br&quot;</span><span class="p">:</span> <span class="s2">&quot;Breton&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;bulgarian&quot;</span><span class="p">:</span> <span class="s2">&quot;Bulgarian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;bg&quot;</span><span class="p">:</span> <span class="s2">&quot;Bulgarian&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;catalan&quot;</span><span class="p">:</span> <span class="s2">&quot;Catalan&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ca&quot;</span><span class="p">:</span> <span class="s2">&quot;Catalan&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;cebuano&quot;</span><span class="p">:</span> <span class="s2">&quot;Cebuano&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;chuvash&quot;</span><span class="p">:</span> <span class="s2">&quot;Chuvash&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;croatian&quot;</span><span class="p">:</span> <span class="s2">&quot;Croatian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;hr&quot;</span><span class="p">:</span> <span class="s2">&quot;Croatian&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;czech&quot;</span><span class="p">:</span> <span class="s2">&quot;Czech&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cs&quot;</span><span class="p">:</span> <span class="s2">&quot;Czech&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;danish&quot;</span><span class="p">:</span> <span class="s2">&quot;Danish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;da&quot;</span><span class="p">:</span> <span class="s2">&quot;Danish&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;esperanto&quot;</span><span class="p">:</span> <span class="s2">&quot;Esperanto&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;eo&quot;</span><span class="p">:</span> <span class="s2">&quot;Esperanto&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;estonian&quot;</span><span class="p">:</span> <span class="s2">&quot;Estonian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;et&quot;</span><span class="p">:</span> <span class="s2">&quot;Estonian&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;finnish&quot;</span><span class="p">:</span> <span class="s2">&quot;Finnish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fi&quot;</span><span class="p">:</span> <span class="s2">&quot;Finnish&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;galician&quot;</span><span class="p">:</span> <span class="s2">&quot;Galician&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;gl&quot;</span><span class="p">:</span> <span class="s2">&quot;Galician&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;georgian&quot;</span><span class="p">:</span> <span class="s2">&quot;Georgian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ka&quot;</span><span class="p">:</span> <span class="s2">&quot;Georgian&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;german&quot;</span><span class="p">:</span> <span class="s2">&quot;German&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;de&quot;</span><span class="p">:</span> <span class="s2">&quot;German&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;de-at&quot;</span><span class="p">:</span> <span class="s2">&quot;German&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;de-de&quot;</span><span class="p">:</span> <span class="s2">&quot;German&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;de-li&quot;</span><span class="p">:</span> <span class="s2">&quot;German&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;de-lu&quot;</span><span class="p">:</span> <span class="s2">&quot;German&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;de-ch&quot;</span><span class="p">:</span> <span class="s2">&quot;German&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;greek&quot;</span><span class="p">:</span> <span class="s2">&quot;Greek&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;el&quot;</span><span class="p">:</span> <span class="s2">&quot;Greek&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;gujarati&quot;</span><span class="p">:</span> <span class="s2">&quot;Gujarati&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;gu&quot;</span><span class="p">:</span> <span class="s2">&quot;Gujarati&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;haitian&quot;</span><span class="p">:</span> <span class="s2">&quot;Haitian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ht&quot;</span><span class="p">:</span> <span class="s2">&quot;Haitian&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;hebrew&quot;</span><span class="p">:</span> <span class="s2">&quot;Hebrew&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;he&quot;</span><span class="p">:</span> <span class="s2">&quot;Hebrew&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;iw&quot;</span><span class="p">:</span> <span class="s2">&quot;Hebrew&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;hindi&quot;</span><span class="p">:</span> <span class="s2">&quot;Hindi&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;hi&quot;</span><span class="p">:</span> <span class="s2">&quot;Hindi&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;hungarian&quot;</span><span class="p">:</span> <span class="s2">&quot;Hungarian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;hu&quot;</span><span class="p">:</span> <span class="s2">&quot;Hungarian&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;icelandic&quot;</span><span class="p">:</span> <span class="s2">&quot;Icelandic&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;is&quot;</span><span class="p">:</span> <span class="s2">&quot;Icelandic&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;ido&quot;</span><span class="p">:</span> <span class="s2">&quot;Ido&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;io&quot;</span><span class="p">:</span> <span class="s2">&quot;Ido&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;igbo&quot;</span><span class="p">:</span> <span class="s2">&quot;Igbo&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;irish&quot;</span><span class="p">:</span> <span class="s2">&quot;Irish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ga&quot;</span><span class="p">:</span> <span class="s2">&quot;Irish&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;kannada&quot;</span><span class="p">:</span> <span class="s2">&quot;Kannada&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;kn&quot;</span><span class="p">:</span> <span class="s2">&quot;Kannada&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;kurdish&quot;</span><span class="p">:</span> <span class="s2">&quot;Kurdish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ku&quot;</span><span class="p">:</span> <span class="s2">&quot;Kurdish&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;latin&quot;</span><span class="p">:</span> <span class="s2">&quot;Latin&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;la&quot;</span><span class="p">:</span> <span class="s2">&quot;Latin&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;latvian&quot;</span><span class="p">:</span> <span class="s2">&quot;Latvian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;lettish&quot;</span><span class="p">:</span> <span class="s2">&quot;Latvian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;lv&quot;</span><span class="p">:</span> <span class="s2">&quot;Latvian&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;lithuanian&quot;</span><span class="p">:</span> <span class="s2">&quot;Lithuanian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;lt&quot;</span><span class="p">:</span> <span class="s2">&quot;Lithuanian&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;lombard&quot;</span><span class="p">:</span> <span class="s2">&quot;Lombard&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;low_saxon&quot;</span><span class="p">:</span> <span class="s2">&quot;Low_Saxon&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;luxembourgish&quot;</span><span class="p">:</span> <span class="s2">&quot;Luxembourgish&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;macedonian&quot;</span><span class="p">:</span> <span class="s2">&quot;Macedonian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mk&quot;</span><span class="p">:</span> <span class="s2">&quot;Macedonian&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;malayalam&quot;</span><span class="p">:</span> <span class="s2">&quot;Malayalam&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;maltese&quot;</span><span class="p">:</span> <span class="s2">&quot;Maltese&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mt&quot;</span><span class="p">:</span> <span class="s2">&quot;Maltese&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;marathi&quot;</span><span class="p">:</span> <span class="s2">&quot;Marathi&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mr&quot;</span><span class="p">:</span> <span class="s2">&quot;Marathi&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;neapolitan&quot;</span><span class="p">:</span> <span class="s2">&quot;Neapolitan&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;nepali&quot;</span><span class="p">:</span> <span class="s2">&quot;Nepali&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ne&quot;</span><span class="p">:</span> <span class="s2">&quot;Nepali&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;newar&quot;</span><span class="p">:</span> <span class="s2">&quot;Newar&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;norwegian_bokmal&quot;</span><span class="p">:</span> <span class="s2">&quot;Norwegian_Bokmal&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;no-bo&quot;</span><span class="p">:</span> <span class="s2">&quot;Norwegian_Bokmal&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;no&quot;</span><span class="p">:</span> <span class="s2">&quot;Norwegian_Bokmal&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;nob&quot;</span><span class="p">:</span> <span class="s2">&quot;Norwegian_Bokmal&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;nb&quot;</span><span class="p">:</span> <span class="s2">&quot;Norwegian_Bokmal&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;norwegian_nynorsk&quot;</span><span class="p">:</span> <span class="s2">&quot;Norwegian_Nynorsk&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;no-ny&quot;</span><span class="p">:</span> <span class="s2">&quot;Norwegian_Nynorsk&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;nno&quot;</span><span class="p">:</span> <span class="s2">&quot;Norwegian_Nynorsk&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;nn&quot;</span><span class="p">:</span> <span class="s2">&quot;Norwegian_Nynorsk&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;occitan&quot;</span><span class="p">:</span> <span class="s2">&quot;Occitan&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;oc&quot;</span><span class="p">:</span> <span class="s2">&quot;Occitan&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;persian&quot;</span><span class="p">:</span> <span class="s2">&quot;Persian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;piedmontese&quot;</span><span class="p">:</span> <span class="s2">&quot;Piedmontese&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;polish&quot;</span><span class="p">:</span> <span class="s2">&quot;Polish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pl&quot;</span><span class="p">:</span> <span class="s2">&quot;Polish&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;quechua&quot;</span><span class="p">:</span> <span class="s2">&quot;Quechua&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;qu&quot;</span><span class="p">:</span> <span class="s2">&quot;Quechua&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;romanian&quot;</span><span class="p">:</span> <span class="s2">&quot;Romanian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ro&quot;</span><span class="p">:</span> <span class="s2">&quot;Romanian&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;samogitian&quot;</span><span class="p">:</span> <span class="s2">&quot;Samogitian&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;serbian&quot;</span><span class="p">:</span> <span class="s2">&quot;Serbian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sr&quot;</span><span class="p">:</span> <span class="s2">&quot;Serbian&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;serbo_croatian&quot;</span><span class="p">:</span> <span class="s2">&quot;Serbo_Croatian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sicilian&quot;</span><span class="p">:</span> <span class="s2">&quot;Sicilian&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;slovak&quot;</span><span class="p">:</span> <span class="s2">&quot;Slovak&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sk&quot;</span><span class="p">:</span> <span class="s2">&quot;Slovak&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;slovenian&quot;</span><span class="p">:</span> <span class="s2">&quot;Slovenian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sl&quot;</span><span class="p">:</span> <span class="s2">&quot;Slovenian&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;sundanese&quot;</span><span class="p">:</span> <span class="s2">&quot;Sundanese&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;su&quot;</span><span class="p">:</span> <span class="s2">&quot;Sundanese&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;swahili&quot;</span><span class="p">:</span> <span class="s2">&quot;Swahili&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;kiswahili&quot;</span><span class="p">:</span> <span class="s2">&quot;Swahili&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sw&quot;</span><span class="p">:</span> <span class="s2">&quot;Swahili&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;swedish&quot;</span><span class="p">:</span> <span class="s2">&quot;Swedish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sv&quot;</span><span class="p">:</span> <span class="s2">&quot;Swedish&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;tagalog&quot;</span><span class="p">:</span> <span class="s2">&quot;Tagalog&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tl&quot;</span><span class="p">:</span> <span class="s2">&quot;Tagalog&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;tamil&quot;</span><span class="p">:</span> <span class="s2">&quot;Tamil&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ta&quot;</span><span class="p">:</span> <span class="s2">&quot;Tamil&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;telugu&quot;</span><span class="p">:</span> <span class="s2">&quot;Telugu&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;te&quot;</span><span class="p">:</span> <span class="s2">&quot;Telugu&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;turkish&quot;</span><span class="p">:</span> <span class="s2">&quot;Turkish&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tr&quot;</span><span class="p">:</span> <span class="s2">&quot;Turkish&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;ukrainian&quot;</span><span class="p">:</span> <span class="s2">&quot;Ukrainian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;uk&quot;</span><span class="p">:</span> <span class="s2">&quot;Ukrainian&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;urdu&quot;</span><span class="p">:</span> <span class="s2">&quot;Urdu&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ur&quot;</span><span class="p">:</span> <span class="s2">&quot;Urdu&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;volapuk&quot;</span><span class="p">:</span> <span class="s2">&quot;Volapuk&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;vo&quot;</span><span class="p">:</span> <span class="s2">&quot;Volapuk&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;walloon&quot;</span><span class="p">:</span> <span class="s2">&quot;Walloon&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;wa&quot;</span><span class="p">:</span> <span class="s2">&quot;Walloon&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;waray_waray&quot;</span><span class="p">:</span> <span class="s2">&quot;Waray_Waray&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;welsh&quot;</span><span class="p">:</span> <span class="s2">&quot;Welsh&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cy&quot;</span><span class="p">:</span> <span class="s2">&quot;Welsh&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;west_frisian&quot;</span><span class="p">:</span> <span class="s2">&quot;West_Frisian&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;western_panjabi&quot;</span><span class="p">:</span> <span class="s2">&quot;Western_Panjabi&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;yoruba&quot;</span><span class="p">:</span> <span class="s2">&quot;Yoruba&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;yo&quot;</span><span class="p">:</span> <span class="s2">&quot;Yoruba&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Summarization</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/services.html">services module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/stopwords_manager.html">stopwords_manager module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/utils.html">utils module</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, vkhanhqui.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

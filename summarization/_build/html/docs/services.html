@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>services module &#8212; Summarization 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="stopwords_manager module" href="stopwords_manager.html" />
+    <link rel="prev" title="Welcome to Summarization’s documentation!" href="../index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="stopwords_manager.html" title="stopwords_manager module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Welcome to Summarization’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Summarization 1.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">services module</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-services">
+<span id="services-module"></span><h1>services module<a class="headerlink" href="#module-services" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="services.get_keywords">
+<span class="sig-prename descclassname"><span class="pre">services.</span></span><span class="sig-name descname"><span class="pre">get_keywords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preprocessed_text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/services.html#get_keywords"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#services.get_keywords" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get keywords</p>
+<p>Keyword arguments:
+preprocessed_text(str) – the processed string(Let’s see preprocessing.__doc__)</p>
+<p>Returns:
+set(str): the set of words in preprocessed_text argument have occurrence percentage
+between MIN and MAX</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="services.get_sentence_weight">
+<span class="sig-prename descclassname"><span class="pre">services.</span></span><span class="sig-name descname"><span class="pre">get_sentence_weight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keywords</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/services.html#get_sentence_weight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#services.get_sentence_weight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get sentence weight</p>
+<p>Keyword arguments:
+sentence(str) – sentence from text(Ex: “Hello Hi. World.”</p>
+<blockquote>
+<div><p>-&gt; Require “Hello Hi” or “World”)</p>
+</div></blockquote>
+<p>keywords(set) – set of keywords(Let’s see get_keywords.__doc__)</p>
+<p>Returns:
+float: weight of sentence</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="services.get_set_of_sentence_weights">
+<span class="sig-prename descclassname"><span class="pre">services.</span></span><span class="sig-name descname"><span class="pre">get_set_of_sentence_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preprocessed_text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sentences</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/services.html#get_set_of_sentence_weights"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#services.get_set_of_sentence_weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get set of sentence weights</p>
+<p>Keyword arguments:
+preprocessed_text(str) – the preprocessed text
+sentences(list): list of sentences in text</p>
+<p>Returns:
+set(float): set of sentence weights</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="services.preprocessing">
+<span class="sig-prename descclassname"><span class="pre">services.</span></span><span class="sig-name descname"><span class="pre">preprocessing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language_code</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/services.html#preprocessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#services.preprocessing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Preprocessing text</p>
+<p>Keyword arguments:
+text(str) – the string split
+language_code(str) – the string of language code(Ex: en, vi, fr,…)</p>
+<p>Returns:
+str: the processed string</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="services.summarize_sentences">
+<span class="sig-prename descclassname"><span class="pre">services.</span></span><span class="sig-name descname"><span class="pre">summarize_sentences</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sentences</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_of_sentence_weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_sentences</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/services.html#summarize_sentences"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#services.summarize_sentences" title="Permalink to this definition">¶</a></dt>
+<dd><p>Summarize sentences</p>
+<p>Keyword arguments:
+sentences(list(str)) – list of sentences(Let’s see get_sentences.__doc__)
+set_of_sentence_weights(set(float)) – set of sentence weights</p>
+<blockquote>
+<div><p>(Let’s see get_set_of_sentence_weights.__doc__)</p>
+</div></blockquote>
+<p>number_of_sentences(int) – the number of sentences as output</p>
+<p>Returns:
+str: the summarized string</p>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../index.html"
+                        title="previous chapter">Welcome to Summarization’s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="stopwords_manager.html"
+                        title="next chapter">stopwords_manager module</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/docs/services.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="stopwords_manager.html" title="stopwords_manager module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Welcome to Summarization’s documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Summarization 1.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">services module</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, vkhanhqui.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+    </div>
+  </body>
+</html>
